@@ -1,0 +1,32 @@
+.auth_main__parent{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.auth_main{
+    border: 1px solid #000;
+    border-radius: 8px;
+    max-width: 400px;
+    width: 100%;
+    margin: 20px 5px 20px 5px;
+    padding: 40px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+.signInWithGoogle{
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+    background-color: transparent;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 8px 15px;
+    border-radius: 24px;
+    transition: all 0.1s ease-in-out;
+    &:hover{
+        background-color: #eeeeee;
+    }
+}

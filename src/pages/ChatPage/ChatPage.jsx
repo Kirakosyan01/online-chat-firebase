@@ -34,15 +34,16 @@ export default function ChatPage({ room, signUserOut }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (newMessage === "") return;
-
+    const messageToSend = newMessage;
+    setNewMessage("");
+    
     await addDoc(messagesRef, {
-      text: newMessage,
+      text: messageToSend,
       createdAt: serverTimestamp(),
       user: auth.currentUser.displayName,
       room: room,
     });
-
-    setNewMessage("");
+    
   };
 
 
