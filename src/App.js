@@ -31,29 +31,15 @@ function App() {
   
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        <input
-          onChange={(e) => setNewMessage(e.target.value)}
-          value={newMessage}
-          type="text"
-          placeholder="Type your message here..."
-        />
-        <button type="submit">Send</button>
-      </form>
-      {console.log(messages)}
-      <div>
-        {messages.map((message) => {
-          return (
-            <div key={message.id}>
-              <p>{message.text}</p>
-            </div>
-          );
-        })}
-      </div>
-      
-      <div>
-        <button onClick={signUserOut}>Sign Out</button>
-      </div>
+      {room ? (
+        <ChatPage room={room} signUserOut={signUserOut}/>
+      ) : (
+        <div>
+          <label>Enter Room Name:</label>
+          <input ref={roomInputRef}/>
+          <button onClick={() => setRoom(roomInputRef.current.value)}>Enter Chat</button>
+        </div>
+      )}
     </div>
   );
 }
