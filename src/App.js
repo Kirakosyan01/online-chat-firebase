@@ -3,7 +3,7 @@ import React, { useState, useRef } from "react";
 import AuthPage from './pages/AuthPage/AuthPage';
 import ChatPage from './pages/ChatPage/ChatPage'
 import {signOut} from 'firebase/auth';
-import { auth } from "./firebase-config"
+import { auth } from "./firebase-config";
 
 import Cookies from "universal-cookie";
 const cookies = new Cookies();
