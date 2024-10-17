@@ -9,11 +9,13 @@ import {
   orderBy,
 } from "firebase/firestore";
 import { auth, db } from "../../firebase-config";
+import { useNavigate } from "react-router-dom";
 
-export default function ChatPage({ room, signUserOut }) {
+export default function ChatPage({ room, signUserOut, setRoom }) {
   const [newMessage, setNewMessage] = useState("");
   const messagesRef = collection(db, "messages");
   const [messages, setMessages] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const queryMessages = query(
@@ -33,18 +35,25 @@ export default function ChatPage({ room, signUserOut }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
     if (newMessage === "") return;
     const messageToSend = newMessage;
     setNewMessage("");
     
     await addDoc(messagesRef, {
+      room: room,
       text: messageToSend,
       createdAt: serverTimestamp(),
       user: auth.currentUser.displayName,
-      room: room,
+      userImg: auth.currentUser.photoURL
     });
     
   };
+
+  const backToRoom = () => {
+    setRoom('');
+    navigate('/');
+  }
 
 
   return (
@@ -64,6 +73,7 @@ export default function ChatPage({ room, signUserOut }) {
           return (
             <div key={message.id}>
               <p>{message.text}</p>
+              {message.userImg && <img src={message.userImg} alt=""/>}
             </div>
           );
         })}
@@ -71,6 +81,7 @@ export default function ChatPage({ room, signUserOut }) {
       
       <div>
         <button onClick={signUserOut}>Sign Out</button>
+        <button onClick={backToRoom}>Back to Room</button>
       </div>
     </div>
   );

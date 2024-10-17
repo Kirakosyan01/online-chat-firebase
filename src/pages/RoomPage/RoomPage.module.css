@@ -1,0 +1,16 @@
+.roomPage{
+    align-items: center;
+    border: 1px solid #000;
+    border-radius: 10px;
+    max-width: 400px;
+    padding: 30px 50px;
+    margin: 100px;
+    display: flex;
+    flex-wrap: wrap-reverse;
+    justify-content: center;
+}
+.roomPage_div{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}

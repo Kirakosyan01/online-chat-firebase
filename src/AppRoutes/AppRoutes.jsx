@@ -14,6 +14,7 @@ export default function AppRoutes() {
     const [room, setRoom] = useState(null);
     const roomInputRef = useRef(null);
     const navigate = useNavigate();
+    
   
     if (!isAuth) {
       return (
@@ -30,7 +31,7 @@ export default function AppRoutes() {
     }
 
     const handleEnterChat = () => {
-        if (room !== "") {
+        if (room && room.trim() !== "") {
           navigate("/chat");
         }
       };
@@ -49,7 +50,7 @@ export default function AppRoutes() {
         />
         <Route
           path="/chat"
-          element={<ChatPage room={room} signUserOut={signUserOut} />}
+          element={<ChatPage room={room} signUserOut={signUserOut} setRoom={setRoom}/>}
         />
     </Routes>
   );
