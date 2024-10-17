@@ -32,7 +32,7 @@ export default function AppRoutes() {
 
     const handleEnterChat = () => {
         if (room && room.trim() !== "") {
-          navigate("/chat");
+          navigate(`/chat/${room}`);
         }
       };
 
@@ -52,6 +52,7 @@ export default function AppRoutes() {
           path="/chat"
           element={<ChatPage room={room} signUserOut={signUserOut} setRoom={setRoom}/>}
         />
+        <Route path="/chat/:room" element={<ChatPage signUserOut={signUserOut} setRoom={setRoom} />}/>
     </Routes>
   );
 }

@@ -1,5 +1,6 @@
 import React from "react";
 import style from "./RoomPage.module.css";
+import { FaStaylinked } from "react-icons/fa6";
 
 export default function RoomPage({
   roomInputRef,
@@ -11,19 +12,22 @@ export default function RoomPage({
   return (
     <div className={style.roomPage_div}>
       <div className={style.roomPage}>
-        <p>Enter Room Name:</p>
-        <form>
+      <h2><FaStaylinked className={style.echoLink_logo}/><span>Echo</span>Link</h2>
+      <div>
+        <p className={style.enterEcho}>Enter <span>Room</span> Name:</p>
+        <form className={style.roomForm}>
           <input
             ref={roomInputRef}
             value={room}
             onChange={(e) => setRoom(e.target.value)}
-            placeholder="Enter room"
+            placeholder="Echo"
           />
           <button type="submit" onClick={handleEnterChat}>
-            Enter Chat
+            Enter Room
           </button>
         </form>
-        <button onClick={signUserOut}>Sign Out</button>
+      </div>
+        <button className={style.SignOutBtn} onClick={signUserOut}>Sign Out</button>
       </div>
     </div>
   );
